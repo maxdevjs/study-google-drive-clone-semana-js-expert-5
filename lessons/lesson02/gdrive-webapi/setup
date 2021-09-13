@@ -1,0 +1,44 @@
+#!/usr/bin/env sh
+
+JEST_CONFIG_FILE="jest.config.mjs"
+# PACKAGE_LOCK_FILE="package-lock.json"
+
+if [ -f $JEST_CONFIG_FILE ]; then
+  echo
+  echo "$JEST_CONFIG_FILE exists"
+  echo
+else
+  echo
+  echo - Initializing Jest
+  echo - Remember to set it up
+  echo
+  npm i -D jest@27 #nodemon@2.0
+  npx jest --init
+fi
+
+NPM_MODULES_TO_INSTALL=(pino@6.8 pino-pretty@5.1 socket.io@4.1
+  pretty-bytes@5.6 busboy@0.3.1 form-data@4.0)
+LIST=`npm list`
+
+# if [ -f $PACKAGE_LOCK_FILE ]; then
+#   echo
+#   echo "$PACKAGE_LOCK_FILE exists"
+#   for m in ${NPM_MODULES_TO_INSTALL[@]}
+#   do
+#     npm ci --silent $m
+#     echo install $m
+#   done
+# else
+# https://www.codegrepper.com/code-examples/shell/%2Fbin%2Fsh+if+variable+contains+string
+  for m in ${NPM_MODULES_TO_INSTALL[@]}
+  do
+    if [[ $LIST == *"$m"* ]]; then
+      echo -e "Already installed module:\t$m"
+    else
+      npm install --silent $m
+      echo -e "Installed module:\t\t$m"
+    fi
+  done
+# fi
+echo
+clear

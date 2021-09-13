@@ -18,10 +18,10 @@ This is the code for the journey athwart the fifth [Javascript Expert Week](http
 - Web API
 
   - [x] Must list downloaded files
-  - [] Must receive file stream and save to disk
-  - [] Must notify about disk file storage progress
-  - [] It must allow uploading of files in image, video or audio format
-  - [] Must achieve 100% code coverage in testst achieve 100% code coverage in tests
+  - [x] Must receive file stream and save to disk
+  - [x] Must notify about disk file storage progress
+  - [x] It must allow uploading of files in image, video or audio format
+  - [x] Must achieve 100% code coverage in testst achieve 100% code coverage in tests
 
 - Web App
 
